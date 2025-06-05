@@ -27,7 +27,11 @@ import com.example.petshopapptp3.screens.paymentMethod.add.PaymentAdd
 import com.example.petshopapptp3.screens.paymentMethod.choose.PaymentChoose
 import com.example.petshopapptp3.screens.paymentMethod.success.PaymentSucces
 import com.example.petshopapptp3.screens.profilePage.account.AccountScreen
+import com.example.petshopapptp3.screens.profilePage.privacy.PrivacyView
 import com.example.petshopapptp3.screens.profilePage.profile.ProfileScreen
+import com.example.petshopapptp3.screens.profilePage.security.ChangeEmailScreen
+import com.example.petshopapptp3.screens.profilePage.security.ChangePasswordScreen
+import com.example.petshopapptp3.screens.profilePage.security.SecurityScreen
 import com.example.petshopapptp3.screens.profilePage.settingPage.SettingsScreen
 import com.example.petshopapptp3.screens.profilePage.settingNotifications.SettingNotificationsScreen
 import com.example.petshopapptp3.viewmodel.CartViewModel
@@ -78,6 +82,10 @@ fun NavGraph(navController: NavHostController) {
         composable (Screen.ForgotPasswordEmail.route) { PasswordWithEmail({},navController) }
         composable (Screen.Settings.route) { SettingsScreen(navController) }
         composable (Screen.Account.route){ AccountScreen(navController) }
+        composable(Screen.Privacy.route){ PrivacyView(navController) }
+        composable(Screen.Security.route){ SecurityScreen(navController) }
+        composable(Screen.ChangeEmail.route){ ChangeEmailScreen(navController) }
+        composable(Screen.ChangePassword.route){ ChangePasswordScreen(navController) }
         composable(Screen.SettingNotifications.route){ SettingNotificationsScreen(navController) }
         composable(
             route = Screen.ProductDetail.route,

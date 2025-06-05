@@ -55,10 +55,10 @@ fun SettingsScreen(navController: NavController) {
             // TODO: NAVIGATION
         })
         SettingsRow("Privacy", R.drawable.danger_circle, onClick = {
-            // TODO: NAVIGATION
+            navController.navigate(Screen.Privacy.route)
         })
         SettingsRow("Security", R.drawable.key, onClick = {
-            // TODO: NAVIGATION
+            navController.navigate(Screen.Security.route)
         })
 
 

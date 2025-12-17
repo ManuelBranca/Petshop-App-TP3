@@ -46,7 +46,7 @@ fun PrivacyView(navController: NavController) {
             )
 
             Text(
-                text = stringResource(R.string.lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_mauris_interdum_sapien_sodales_mi_sagittis_hendrerit_curabitur_ut_lectus_nec_orci_cursus_rhoncus_donec_a_ultrices_risus_mauris_ut_erat_ut_urna_rhoncus_facilisis_a_eu_neque_ut_iaculis_viverra_laoreet_in_interdum_augue_non_auctor_pharetra_felis_ante_gravida_ante_quis_mattis_quam_eros_non_quam_vivamus_scelerisque_ante_nec_dapibus_convallis_vestibulum_quis_scelerisque_leo_vestibulum_quis_porttitor_tellus_non_finibus_nibh_quisque_ut_tempor_nulla_sed_consectetur_tortor_mauris_volutpat_viverra_arcu_non_laoreet_duis_eu_arcu_nunc_pellentesque_ultricies_facilisis_faucibus_duis_magna_sem_ultricies_sed_scelerisque_efficitur_hendrerit_at_arcu),
+                text = stringResource(R.string.lorem_ipsum_large),
                 style = MaterialTheme.typography.labelMedium,
                 fontWeight = FontWeight.Normal,
                 fontSize = 14.sp,
@@ -64,7 +64,7 @@ fun PrivacyView(navController: NavController) {
             )
 
             Text(
-                text = stringResource(R.string.lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_mauris_interdum_sapien_sodales_mi_sagittis_hendrerit_curabitur_ut_lectus_nec_orci_cursus_rhoncus_donec_a_ultrices_risus_mauris_ut_erat_ut_urna_rhoncus_facilisis_a_eu_neque_ut_iaculis_viverra_laoreet_in_interdum_augue_non_auctor_pharetra_felis_ante_gravida_ante_quis_mattis_quam_eros_non_quam_vivamus_scelerisque_ante_nec_dapibus_convallis_vestibulum_quis_scelerisque_leo_vestibulum_quis_porttitor_tellus_non_finibus_nibh_quisque_ut_tempor_nulla_sed_consectetur_tortor_mauris_volutpat_viverra_arcu_non_laoreet_duis_eu_arcu_nunc_pellentesque_ultricies_facilisis_faucibus_duis_magna_sem_ultricies_sed_scelerisque_efficitur_hendrerit_at_arcu),
+                text = stringResource(R.string.lorem_ipsum_large),
                 style = MaterialTheme.typography.labelMedium,
                 fontWeight = FontWeight.Normal,
                 fontSize = 14.sp,

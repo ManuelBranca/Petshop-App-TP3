@@ -1,6 +1,5 @@
 package com.example.petshopapptp3.components.shared
 
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -8,10 +7,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.petshopapptp3.data.remote.Product
 import com.example.petshopapptp3.navigation.Screen
+import com.example.petshopapptp3.ui.theme.rememberPhoneDimens
 
 @Composable
 fun ProductRow(
@@ -21,11 +20,12 @@ fun ProductRow(
     favoriteIds: Set<Int>,
     onToggleFavorite: (Product) -> Unit
 ) {
+    val d = rememberPhoneDimens()
     val gray = Color(0xFFF6F6F6)
 
     Row(
         modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(12.dp)
+        horizontalArrangement = Arrangement.spacedBy(d.gap)
     ) {
         rowProducts.forEach { product ->
             ProductCard(
@@ -35,9 +35,7 @@ fun ProductRow(
                 modifier = Modifier.weight(1f),
                 isFavorite = favoriteIds.contains(product.id),
                 onFavoriteClick = { onToggleFavorite(product) },
-                onClick = {
-                    navController.navigate(Screen.ProductDetail.createRoute(product.id))
-                }
+                onClick = { navController.navigate(Screen.ProductDetail.createRoute(product.id)) }
             )
         }
 
@@ -46,6 +44,3 @@ fun ProductRow(
         }
     }
 }
-
-
-

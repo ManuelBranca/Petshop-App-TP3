@@ -12,31 +12,33 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.petshopapptp3.R
-
+import com.example.petshopapptp3.ui.theme.rememberPhoneDimens
 
 @Composable
 fun PromoCard(purple: Color) {
+    val d = rememberPhoneDimens()
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(120.dp)
-            .background(purple, RoundedCornerShape(16.dp))
+            .height(d.iconSize * 6f) // aprox 120/132/144
+            .background(purple, RoundedCornerShape(d.cardRadius))
     ) {
         Image(
             painter = painterResource(id = R.drawable.comida_canina),
             contentDescription = null,
             modifier = Modifier
                 .align(Alignment.CenterStart)
-                .padding(16.dp)
-                .size(80.dp)
+                .padding(d.cardPad)
+                .size(d.iconSize * 4f) // antes 80.dp
         )
+
         Column(
             modifier = Modifier
                 .align(Alignment.CenterEnd)
-                .padding(16.dp)
+                .padding(d.cardPad)
                 .fillMaxHeight(),
             verticalArrangement = Arrangement.Center
         ) {

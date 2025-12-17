@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.petshopapptp3.ui.theme.rememberPhoneDimens
 
 @Composable
 fun PaymentOptionCard(
@@ -24,20 +25,24 @@ fun PaymentOptionCard(
     onClick: () -> Unit,
     enabled: Boolean = true
 ) {
+    val d = rememberPhoneDimens()
+
     val borderColor = if (isSelected) Color(0xFF7B61FF) else Color.LightGray
     val textColor = if (enabled) Color.Black else Color.LightGray
+    val shape = RoundedCornerShape(d.cardRadius)
 
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .border(1.dp, borderColor, RoundedCornerShape(12.dp))
-            .background(Color.White, RoundedCornerShape(12.dp))
+            .border(1.dp, borderColor, shape)
+            .background(Color.White, shape)
             .clickable(enabled = enabled, onClick = onClick)
-            .padding(horizontal = 16.dp, vertical = 14.dp),
+            .padding(horizontal = d.pad, vertical = d.gap),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(text = title, color = textColor)
+
         RadioButton(
             selected = isSelected,
             onClick = onClick,

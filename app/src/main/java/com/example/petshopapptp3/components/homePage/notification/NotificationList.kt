@@ -21,33 +21,40 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
+import com.example.petshopapptp3.ui.theme.rememberPhoneDimens
 
 @Composable
 fun NotificationList(item: NotificationData) {
+    val d = rememberPhoneDimens()
+
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
+        // opcional: si querés que todas las filas tengan aire
+        // .padding(vertical = d.gap / 2)
     ) {
         Image(
             painter = painterResource(id = item.imageResId),
             contentDescription = null,
             modifier = Modifier
-                .size(48.dp)
+                .size(d.iconSize * 2.2f) // antes 48.dp
                 .clip(CircleShape)
                 .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f))
         )
-        Spacer(modifier = Modifier.width(12.dp))
+
+        Spacer(modifier = Modifier.width(d.gap))
+
         Column(modifier = Modifier.weight(1f)) {
             Text(item.title, fontWeight = FontWeight.Bold)
             Text(item.subtitle, style = MaterialTheme.typography.bodySmall)
         }
+
         Icon(
             imageVector = Icons.Default.ArrowBack,
             contentDescription = null,
             modifier = Modifier
-                .size(20.dp)
+                .size(d.iconSize) // antes 20.dp
                 .rotate(180f)
         )
     }

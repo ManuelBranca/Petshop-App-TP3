@@ -8,15 +8,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.petshopapptp3.ui.theme.rememberPhoneDimens
 
 @Composable
 fun FilterChip(label: String, onClick: () -> Unit) {
+    val d = rememberPhoneDimens()
+
     Box(
         modifier = Modifier
-            .background(Color(0xFFF1F1F1), shape = RoundedCornerShape(16.dp))
-            .padding(horizontal = 12.dp, vertical = 6.dp)
+            .background(Color(0xFFF1F1F1), shape = RoundedCornerShape(d.cardRadius))
+            .padding(horizontal = d.gapLg, vertical = d.gap / 2)
     ) {
         Text(label, fontSize = 14.sp)
     }

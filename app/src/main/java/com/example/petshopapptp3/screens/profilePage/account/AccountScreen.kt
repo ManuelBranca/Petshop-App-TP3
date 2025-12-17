@@ -45,7 +45,7 @@ fun AccountScreen(navController: NavController) {
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Column {
-            ArrowTitle(Text = stringResource(R.string.account)) {
+            ArrowTitle(text = stringResource(R.string.account)) {
                 navController.navigate(Screen.Settings.route)
             }
 
@@ -109,7 +109,7 @@ fun AccountScreen(navController: NavController) {
         }
 
         StartButton(
-            Text = stringResource(R.string.save_changes),
+            text = stringResource(R.string.save_changes),
             onClick = {
                 navController.navigate(Screen.Profile.route)
             }

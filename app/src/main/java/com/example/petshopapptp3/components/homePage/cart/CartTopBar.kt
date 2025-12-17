@@ -13,24 +13,32 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.petshopapptp3.R
+import com.example.petshopapptp3.ui.theme.rememberPhoneDimens
 
 @Composable
 fun CartTopBar(onClick: () -> Unit) {
+    val d = rememberPhoneDimens()
+
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = d.pad, vertical = d.topBarPad)
     ) {
         IconButton(onClick = onClick) {
-            Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.back))
+            Icon(
+                imageVector = Icons.Default.ArrowBack,
+                contentDescription = stringResource(R.string.back)
+            )
         }
+
         Text(
             text = stringResource(R.string.cart),
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp,
-            modifier = Modifier.padding(start = 8.dp)
+            modifier = Modifier.padding(start = d.gap)
         )
     }
 }

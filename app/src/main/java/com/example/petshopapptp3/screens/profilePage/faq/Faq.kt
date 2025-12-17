@@ -115,7 +115,7 @@ fun FaqItem(
         }
         if (isExpanded) {
             Text(
-                text = stringResource(R.string.lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_mauris_interdum_sapien_sodales_mi_sagittis_hendrerit),
+                text = stringResource(R.string.lorem_ipsum_small),
                 style = MaterialTheme.typography.bodySmall,
                 color = Color.Gray,
                 modifier = Modifier.padding(top = 8.dp)

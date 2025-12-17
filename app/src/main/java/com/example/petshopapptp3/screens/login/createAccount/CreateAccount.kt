@@ -106,7 +106,7 @@ fun CreateAccount(
         Spacer(modifier = Modifier.height(24.dp))
 
         StartButton(
-            ButtonColor = buttonColor,
+            buttonColor = buttonColor,
             onClick = {
                 fullNameError = fullName.isBlank()
                 emailError = email.isBlank()

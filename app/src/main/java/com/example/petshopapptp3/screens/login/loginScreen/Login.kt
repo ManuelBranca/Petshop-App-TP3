@@ -100,7 +100,7 @@ fun LoginScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(25.dp))
 
         StartButton(
-            ButtonColor = buttonColor,
+            buttonColor = buttonColor,
             onClick = {
                 emailError = email.isBlank()
                 passwordError = password.isBlank()

@@ -2,22 +2,22 @@ package com.example.petshopapptp3.components.shared
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import com.example.petshopapptp3.R
 import com.example.petshopapptp3.ui.theme.purple
+import com.example.petshopapptp3.ui.theme.rememberPhoneDimens
 
 @Composable
 fun InputField(
@@ -28,26 +28,47 @@ fun InputField(
     isError: Boolean = false,
     showError: Boolean = false
 ) {
+    val d = rememberPhoneDimens()
+
     Column {
         OutlinedTextField(
             value = value,
             onValueChange = onValueChange,
             label = { Text(label) },
             placeholder = { Text(label) },
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(12.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(d.inputHeight),
+            shape = RoundedCornerShape(d.cardRadius),
             singleLine = true,
             isError = isError,
-            visualTransformation = if (isPassword) PasswordVisualTransformation()
-            else VisualTransformation.None,
-            textStyle = LocalTextStyle.current.copy(color = purple)
+            visualTransformation = if (isPassword) PasswordVisualTransformation() else VisualTransformation.None,
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedTextColor = Color.Black,
+                unfocusedTextColor = Color.Black,
+                disabledTextColor = Color.Gray,
+
+                cursorColor = purple,
+
+                focusedBorderColor = purple,
+                unfocusedBorderColor = Color.LightGray,
+                errorBorderColor = Color.Red,
+
+                focusedLabelColor = purple,
+                unfocusedLabelColor = Color.Gray,
+                errorLabelColor = Color.Red,
+
+                focusedPlaceholderColor = Color.Gray,
+                unfocusedPlaceholderColor = Color.Gray
+            )
         )
+
         if (showError && isError) {
             Text(
                 text = stringResource(R.string.campo_requerido),
                 color = Color.Red,
                 style = MaterialTheme.typography.bodySmall,
-                modifier = Modifier.padding(start = 16.dp, top = 4.dp)
+                modifier = Modifier.padding(start = d.pad, top = d.gap / 2)
             )
         }
     }

@@ -24,6 +24,8 @@ import coil.compose.AsyncImage
 import com.example.petshopapptp3.components.shared.ArrowTitle
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.res.stringResource
+import com.example.petshopapptp3.R
 
 @Composable
 fun FavoritesScreen(
@@ -32,8 +34,10 @@ fun FavoritesScreen(
 ) {
     val favorites by favVm.favorites.collectAsState()
 
-    Column(Modifier.fillMaxSize().padding(16.dp)) {
-        ArrowTitle("Favorites") { navController.popBackStack() }
+    Column(Modifier
+        .fillMaxSize()
+        .padding(16.dp)) {
+        ArrowTitle(stringResource(R.string.favorites)) { navController.popBackStack() }
 
         Spacer(Modifier.height(12.dp))
 
@@ -54,7 +58,7 @@ fun FavoritesScreen(
                         Text("$${item.price}")
                     }
                     IconButton(onClick = { favVm.remove(item.id) }) {
-                        Icon(Icons.Default.Delete, contentDescription = "Remove")
+                        Icon(Icons.Default.Delete, contentDescription = stringResource(R.string.remove))
                     }
                 }
             }

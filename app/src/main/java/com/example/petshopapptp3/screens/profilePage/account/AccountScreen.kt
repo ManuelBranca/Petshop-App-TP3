@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.petshopapptp3.R
@@ -32,9 +33,10 @@ import com.example.petshopapptp3.navigation.Screen
 
 @Composable
 fun AccountScreen(navController: NavController) {
-    var name by remember { mutableStateOf("Abdul") }
-    var username by remember { mutableStateOf("Abdul") }
-    var email by remember { mutableStateOf("Abdul") }
+    val abdul = stringResource(R.string.abdul)
+    var name by remember { mutableStateOf(abdul) }
+    var username by remember { mutableStateOf(abdul) }
+    var email by remember { mutableStateOf(abdul) }
 
     Column(
         modifier = Modifier
@@ -43,7 +45,7 @@ fun AccountScreen(navController: NavController) {
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Column {
-            ArrowTitle(Text = "Account") {
+            ArrowTitle(Text = stringResource(R.string.account)) {
                 navController.navigate(Screen.Settings.route)
             }
 
@@ -57,7 +59,7 @@ fun AccountScreen(navController: NavController) {
 
                 Image(
                     painter = painterResource(id = R.drawable.fondo_avatar),
-                    contentDescription = "Fondo decorativo",
+                    contentDescription = stringResource(R.string.fondo_decorativo),
                     modifier = Modifier
                         .matchParentSize()
                         .offset(y = yOffset)
@@ -71,7 +73,7 @@ fun AccountScreen(navController: NavController) {
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.edit),
-                        contentDescription = "Editar fondo"
+                        contentDescription = stringResource(R.string.editar_fondo)
                     )
                 }
 
@@ -83,14 +85,14 @@ fun AccountScreen(navController: NavController) {
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.avatar4),
-                        contentDescription = "Avatar",
+                        contentDescription = stringResource(R.string.avatar),
                         modifier = Modifier
                             .clip(RoundedCornerShape(100))
                             .height(80.dp)
                     )
 
                     Text(
-                        text = "Abduldul",
+                        text = stringResource(R.string.abduldul),
                         style = MaterialTheme.typography.titleMedium,
                         modifier = Modifier.padding(top = 8.dp)
                     )
@@ -99,15 +101,15 @@ fun AccountScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.height(60.dp))
 
-            InputField(label = "Name", value = name, onValueChange = { name = it })
+            InputField(label = stringResource(R.string.name), value = name, onValueChange = { name = it })
             Spacer(modifier = Modifier.height(12.dp))
-            InputField(label = "Username", value = username, onValueChange = { username = it })
+            InputField(label = stringResource(R.string.username), value = username, onValueChange = { username = it })
             Spacer(modifier = Modifier.height(12.dp))
-            InputField(label = "Email", value = email, onValueChange = { email = it })
+            InputField(label = stringResource(R.string.email), value = email, onValueChange = { email = it })
         }
 
         StartButton(
-            Text = "Save Changes",
+            Text = stringResource(R.string.save_changes),
             onClick = {
                 navController.navigate(Screen.Profile.route)
             }

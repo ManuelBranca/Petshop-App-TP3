@@ -14,12 +14,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
+import com.example.petshopapptp3.R
 import com.example.petshopapptp3.components.buttons.StartButton
 import com.example.petshopapptp3.components.shared.ArrowTitle
 import com.example.petshopapptp3.data.remote.Product
@@ -58,7 +60,7 @@ fun ProductDetailScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                ArrowTitle("Product Detail") {
+                ArrowTitle(stringResource(R.string.product_detail)) {
                     navController.popBackStack()
                 }
                 IconButton(onClick = { favVm.toggle(product) }) {
@@ -111,11 +113,11 @@ fun ProductDetailScreen(
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     IconButton(onClick = { if (quantity > 1) quantity-- }) {
-                        Icon(Icons.Default.Delete, contentDescription = "Decrease")
+                        Icon(Icons.Default.Delete, contentDescription = stringResource(R.string.decrease))
                     }
                     Text(text = quantity.toString(), fontSize = 18.sp, fontWeight = FontWeight.Medium)
                     IconButton(onClick = { quantity++ }) {
-                        Icon(Icons.Default.Add, contentDescription = "Increase")
+                        Icon(Icons.Default.Add, contentDescription = stringResource(R.string.increase))
                     }
                 }
 

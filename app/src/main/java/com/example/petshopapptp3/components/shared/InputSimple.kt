@@ -9,10 +9,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.*
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import com.example.petshopapptp3.R
 
 @Composable
-fun InputSimple(InputName: String = "Email", isPassword: Boolean = false) {
+fun InputSimple(InputName: String = stringResource(R.string.email), isPassword: Boolean = false) {
     var email by remember { mutableStateOf("") }
 
     OutlinedTextField(

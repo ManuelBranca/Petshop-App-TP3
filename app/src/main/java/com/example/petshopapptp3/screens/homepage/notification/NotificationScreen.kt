@@ -10,6 +10,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -24,24 +25,26 @@ import com.example.petshopapptp3.components.shared.ArrowTitle
 fun NotificationScreen(navController: NavController) {
     var selectedTab by remember { mutableStateOf(0) }
 
-    val tabTitles = listOf("Activity", "Seller Mode")
+    val tabTitles = listOf(stringResource(R.string.activity), stringResource(R.string.seller_mode))
 
     val activityItems = List(4) {
-        NotificationData("SALE 50%", "Check the details!", R.drawable.comida_canina)
+        NotificationData(stringResource(R.string.sale_50),
+            stringResource(R.string.check_the_details), R.drawable.comida_canina)
     }
 
     val sellerItems = listOf(
-        NotificationData("You Got New Order!", "Please arrange delivery", R.drawable.comida_canina),
-        NotificationData("Momon", "Liked your Product", R.drawable.avatar1),
-        NotificationData("Ola", "Liked your Product", R.drawable.avatar2),
-        NotificationData("Raul", "Liked your Product", R.drawable.avatar3),
-        NotificationData("You Got New Order!", "Please arrange delivery", R.drawable.comida_canina),
-        NotificationData("Vito", "Liked your Product", R.drawable.avatar4),
+        NotificationData(stringResource(R.string.you_got_new_order),
+            stringResource(R.string.please_arrange_delivery), R.drawable.comida_canina),
+        NotificationData(stringResource(R.string.momon), stringResource(R.string.liked_your_product), R.drawable.avatar1),
+        NotificationData(stringResource(R.string.ola), stringResource(R.string.liked_your_product), R.drawable.avatar2),
+        NotificationData(stringResource(R.string.raul), stringResource(R.string.liked_your_product), R.drawable.avatar3),
+        NotificationData(stringResource(R.string.you_got_new_order), stringResource(R.string.please_arrange_delivery), R.drawable.comida_canina),
+        NotificationData(stringResource(R.string.vito), stringResource(R.string.liked_your_product), R.drawable.avatar4),
     )
 
     Scaffold(
         topBar = {
-            ArrowTitle("Notification"){
+            ArrowTitle(stringResource(R.string.notification)){
                 navController.popBackStack()
             }
         }

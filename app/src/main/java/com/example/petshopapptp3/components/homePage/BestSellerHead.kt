@@ -7,10 +7,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
+import com.example.petshopapptp3.R
 
 
 @Composable
@@ -22,8 +23,8 @@ fun BestSellerHeader(purple: Color, onViewAllClick: () -> Unit) {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text("Best Seller", fontWeight = FontWeight.Bold)
-            Text("View All", color = purple, fontSize = 12.sp,  modifier = Modifier.clickable { onViewAllClick() })
+            Text(stringResource(R.string.best_seller), fontWeight = FontWeight.Bold)
+            Text(stringResource(R.string.view_all), color = purple, fontSize = 12.sp,  modifier = Modifier.clickable { onViewAllClick() })
         }
     }
 }

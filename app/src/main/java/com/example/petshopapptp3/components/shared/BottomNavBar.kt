@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.petshopapptp3.R
@@ -27,7 +28,10 @@ fun BottomNavBar(
     onItemSelected: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val items = listOf("Home", "Chat", "Bag", "Profile")
+    val items = listOf(stringResource(R.string.home),
+        stringResource(R.string.chat), stringResource(R.string.bag),
+        stringResource(R.string.profile)
+    )
 
     NavigationBar(
         containerColor = Color(0xFFF8F8F8),
@@ -39,10 +43,10 @@ fun BottomNavBar(
                 onClick = { onItemSelected(index) },
                 icon = {
                     when (index) {
-                        0 -> Icon(painter = painterResource(R.drawable.home_active), contentDescription = "Home")
-                        1 -> Icon(painter = painterResource(R.drawable.time_circle), contentDescription = "Chat")
-                        2 -> Icon(painter = painterResource(R.drawable.bag), contentDescription = "Bag")
-                        3 -> Icon(painter = painterResource(R.drawable.profile), contentDescription = "Profile")
+                        0 -> Icon(painter = painterResource(R.drawable.home_active), contentDescription = stringResource(R.string.home))
+                        1 -> Icon(painter = painterResource(R.drawable.time_circle), contentDescription = stringResource(R.string.chat))
+                        2 -> Icon(painter = painterResource(R.drawable.bag), contentDescription = stringResource(R.string.bag))
+                        3 -> Icon(painter = painterResource(R.drawable.profile), contentDescription = stringResource(R.string.profile))
                     }
                 },
                 alwaysShowLabel = false

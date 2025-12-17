@@ -14,10 +14,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.petshopapptp3.R
 import com.example.petshopapptp3.navigation.Screen
 
 @Composable
@@ -32,23 +34,23 @@ fun CartSummary(cartItems: List<CartItem>,totalPrice: Double, purple: Color, nav
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text("$totalItems Items")
-            Text("$${"%.2f".format(totalPrice)}")
+            Text(stringResource(R.string.total_items, totalItems))
+            Text(stringResource(R.string.total_price, "%.2f".format(totalPrice)))
         }
         Spacer(modifier = Modifier.height(4.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text("Tax")
-            Text("$0.00")
+            Text(stringResource(R.string.tax))
+            Text(stringResource(R.string.Cero))
         }
         Spacer(modifier = Modifier.height(8.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text("Totals", fontWeight = FontWeight.Bold)
+            Text(stringResource(R.string.totals), fontWeight = FontWeight.Bold)
             Text(
                 "$${"%.2f".format(totalPrice)}",
                 fontWeight = FontWeight.Bold
@@ -63,7 +65,7 @@ fun CartSummary(cartItems: List<CartItem>,totalPrice: Double, purple: Color, nav
             colors = ButtonDefaults.buttonColors(containerColor = purple),
             shape = RoundedCornerShape(12.dp)
         ) {
-            Text("Checkout", color = Color.White, fontSize = 16.sp)
+            Text(stringResource(R.string.checkout), color = Color.White, fontSize = 16.sp)
         }
     }
 }

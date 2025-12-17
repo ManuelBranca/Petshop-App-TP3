@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -22,7 +23,9 @@ import com.example.petshopapptp3.R
 @Composable
 fun CategorySection(purple: Color) {
     val gray = Color(0xFFF6F6F6)
-    val categories = listOf("Food", "Toys", "Accessories")
+    val categories = listOf(stringResource(R.string.food),
+        stringResource(R.string.toys), stringResource(R.string.accessories)
+    )
 
     // Estado del chip seleccionado
     var selectedIndex by remember { mutableStateOf(0) }
@@ -33,8 +36,8 @@ fun CategorySection(purple: Color) {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text("Category", fontWeight = FontWeight.Bold, fontSize = 16.sp)
-            Text("View All", color = purple, fontSize = 12.sp)
+            Text(stringResource(R.string.category), fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text(stringResource(R.string.view_all), color = purple, fontSize = 12.sp)
         }
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -53,7 +56,7 @@ fun CategorySection(purple: Color) {
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.swap),
-                    contentDescription = "Swap",
+                    contentDescription = stringResource(R.string.swap),
                     modifier = Modifier.size(20.dp),
                     colorFilter = ColorFilter.tint(Color.Black)
                 )

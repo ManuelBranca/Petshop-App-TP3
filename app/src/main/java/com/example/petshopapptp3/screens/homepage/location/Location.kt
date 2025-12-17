@@ -12,10 +12,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.petshopapptp3.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -40,7 +42,7 @@ fun Location(onDismiss: () -> Unit) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Text("Location", fontWeight = FontWeight.Bold, fontSize = 18.sp)
+            Text(stringResource(R.string.location), fontWeight = FontWeight.Bold, fontSize = 18.sp)
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -50,7 +52,7 @@ fun Location(onDismiss: () -> Unit) {
             OutlinedTextField(
                 value = searchText,
                 onValueChange = { searchText = it },
-                placeholder = { Text("Search your Location") },
+                placeholder = { Text(stringResource(R.string.search_your_location)) },
                 leadingIcon = {
                     Icon(Icons.Default.Search, contentDescription = null)
                 },
@@ -69,7 +71,7 @@ fun Location(onDismiss: () -> Unit) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable {  },
+                    .clickable { },
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
@@ -79,9 +81,9 @@ fun Location(onDismiss: () -> Unit) {
                 )
                 Spacer(modifier = Modifier.width(12.dp))
                 Column {
-                    Text("Track your Location", fontWeight = FontWeight.Medium)
+                    Text(stringResource(R.string.track_your_location), fontWeight = FontWeight.Medium)
                     Text(
-                        "automatically selects your\ncurrent location",
+                        stringResource(R.string.automatically_selects_your_current_location),
                         fontSize = 12.sp,
                         color = Color.Gray
                     )

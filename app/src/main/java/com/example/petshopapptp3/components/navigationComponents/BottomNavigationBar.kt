@@ -64,7 +64,7 @@ fun BottomNavigationBar(navController: NavController) {
                                     .background(Color(0xFF7A42F4))
                             )
                         } else {
-                            Spacer(modifier = Modifier.height(10.dp)) // espacio para alinear
+                            Spacer(modifier = Modifier.height(10.dp))
                         }
                     }
                 },

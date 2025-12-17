@@ -11,11 +11,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.petshopapptp3.components.buttons.StartButton
 import com.example.petshopapptp3.components.paymentMethod.PaymentOptionCard
 import androidx.navigation.NavController
+import com.example.petshopapptp3.R
 import com.example.petshopapptp3.components.shared.ArrowTitle
 import com.example.petshopapptp3.components.shared.TitleSection
 import com.example.petshopapptp3.navigation.Screen
@@ -26,6 +28,8 @@ fun PaymentChoose(
     navController: NavController,
     cartViewModel: CartViewModel
 ) {
+    val paypal = stringResource(R.string.paypal)
+    val bankTransfer = stringResource(R.string.bank_transfer)
     var selectedMethod by remember { mutableStateOf("Paypal") }
 
     Column(
@@ -44,30 +48,30 @@ fun PaymentChoose(
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            TitleSection("Add New Payment", 16.sp)
+            TitleSection(stringResource(R.string.add_new_payment), 16.sp)
 
             Spacer(modifier = Modifier.height(24.dp))
 
             PaymentOptionCard(
-                title = "Paypal",
-                isSelected = selectedMethod == "Paypal",
-                onClick = { selectedMethod = "Paypal" },
+                title = paypal,
+                isSelected = selectedMethod == paypal,
+                onClick = { selectedMethod = paypal },
                 enabled = true
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
             PaymentOptionCard(
-                title = "Bank Transfer",
-                isSelected = selectedMethod == "Bank Transfer",
-                onClick = { selectedMethod = "Bank Transfer" },
+                title = bankTransfer,
+                isSelected = selectedMethod == bankTransfer,
+                onClick = { selectedMethod = bankTransfer },
                 enabled = true
             )
         }
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        StartButton("Checkout", onClick = {
+        StartButton(stringResource(R.string.checkout), onClick = {
             cartViewModel.clearEverything()
             navController.navigate(Screen.PaymentSuccess.route)
         })

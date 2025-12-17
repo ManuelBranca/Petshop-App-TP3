@@ -13,13 +13,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import com.example.petshopapptp3.R
 import com.example.petshopapptp3.ui.theme.purple
 
 @Composable
 fun InputField(
-    label: String = "Email",
+    label: String = stringResource(R.string.email),
     value: String,
     onValueChange: (String) -> Unit,
     isPassword: Boolean = false,
@@ -42,7 +44,7 @@ fun InputField(
         )
         if (showError && isError) {
             Text(
-                text = "Campo requerido",
+                text = stringResource(R.string.campo_requerido),
                 color = Color.Red,
                 style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.padding(start = 16.dp, top = 4.dp)

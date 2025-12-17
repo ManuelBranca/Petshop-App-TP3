@@ -44,13 +44,13 @@ fun NewPassword(onLoginClick: () -> Unit = { }, navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.height(50.dp))
-        TitleSection("Forgot Password")
+        TitleSection(stringResource(R.string.forgot_password))
         Spacer(modifier = Modifier.height(30.dp))
         SubtitleSection(stringResource(R.string.login_SubTitle_General))
         Spacer(modifier = Modifier.height(30.dp))
 
         InputField(
-            label = "New Password",
+            label = stringResource(R.string.new_password),
             value = password,
             onValueChange = {
                 password = it
@@ -65,7 +65,7 @@ fun NewPassword(onLoginClick: () -> Unit = { }, navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
         InputField(
-            label = "Confirm Password",
+            label = stringResource(R.string.confirm_password),
             value = confirmPassword,
             onValueChange = {
                 confirmPassword = it
@@ -82,7 +82,7 @@ fun NewPassword(onLoginClick: () -> Unit = { }, navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
         StartButton(
-            Text = "Reset Password",
+            Text = stringResource(R.string.reset_password),
             ButtonColor = buttonColor,
             onClick = {
                 passwordError = password.isBlank()

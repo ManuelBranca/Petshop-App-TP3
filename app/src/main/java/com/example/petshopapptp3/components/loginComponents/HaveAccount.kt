@@ -9,7 +9,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.petshopapptp3.R
 import com.example.petshopapptp3.components.shared.ClickeableText
 
 @Composable
@@ -19,10 +21,10 @@ fun HaveAccount(onLoginClick: () -> Unit) {
         horizontalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "Have an account?",
+            text = stringResource(R.string.have_an_account),
             style = MaterialTheme.typography.bodySmall
         )
         Spacer(modifier = Modifier.width(4.dp))
-        ClickeableText("Login", onClick = onLoginClick)
+        ClickeableText(stringResource(R.string.login), onClick = onLoginClick)
     }
 }

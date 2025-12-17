@@ -11,9 +11,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.petshopapptp3.R
 
 @Composable
 fun CartTopBar(onClick: () -> Unit) {
@@ -22,10 +24,10 @@ fun CartTopBar(onClick: () -> Unit) {
         modifier = Modifier.fillMaxWidth()
     ) {
         IconButton(onClick = onClick) {
-            Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+            Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.back))
         }
         Text(
-            text = "Cart",
+            text = stringResource(R.string.cart),
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp,
             modifier = Modifier.padding(start = 8.dp)

@@ -22,14 +22,17 @@ import com.example.petshopapptp3.R
 import com.example.petshopapptp3.components.shared.ArrowTitle
 import com.example.petshopapptp3.navigation.Screen
 import androidx.compose.foundation.clickable
+import androidx.compose.ui.res.stringResource
 import com.example.petshopapptp3.components.profile.SettingsRow
 
 @Composable
 fun SettingsScreen(navController: NavController) {
     val settingsItems = listOf(
-        "Account", "Address", "Notification", "Payment Method", "Privacy", "Security"
+        stringResource(R.string.account),
+        stringResource(R.string.address), stringResource(R.string.notification), stringResource(R.string.payment_method), stringResource(R.string.privacy), stringResource(R.string.security)
     )
-    val helpItems = listOf("Contact Us", "FAQ")
+
+    val helpItems = listOf(stringResource(R.string.contact_us), stringResource(R.string.faq))
 
     Column(
         modifier = Modifier
@@ -38,46 +41,46 @@ fun SettingsScreen(navController: NavController) {
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Column {
-            ArrowTitle("Settings Page") {
+            ArrowTitle(stringResource(R.string.settings_page)) {
                 navController.navigate(Screen.Profile.route)
             }
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            Text("Account", fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
+            Text(stringResource(R.string.account), fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
             Spacer(modifier = Modifier.height(8.dp))
 
-            SettingsRow("Account", R.drawable.profile) {
+            SettingsRow(stringResource(R.string.account), R.drawable.profile) {
                 navController.navigate(Screen.Account.route)
             }
-            SettingsRow("Address", R.drawable.home_active) {
+            SettingsRow(stringResource(R.string.address), R.drawable.home_active) {
                 // TODO: NAVIGATION
             }
-            SettingsRow("Notification", R.drawable.notification) {
+            SettingsRow(stringResource(R.string.notification), R.drawable.notification) {
                 navController.navigate(Screen.SettingNotifications.route)
             }
-            SettingsRow("Payment Method", R.drawable.wallet) {
+            SettingsRow(stringResource(R.string.payment_method), R.drawable.wallet) {
                 navController.navigate(Screen.PaymentAdd.createRoute(true))
             }
-            SettingsRow("Privacy", R.drawable.danger_circle) {
+            SettingsRow(stringResource(R.string.privacy), R.drawable.danger_circle) {
                 navController.navigate(Screen.TermsAndPrivacy.route)
             }
-            SettingsRow("Security", R.drawable.key) {
+            SettingsRow(stringResource(R.string.security), R.drawable.key) {
                 navController.navigate(Screen.Security.route)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Text("Help", fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
+            Text(stringResource(R.string.help), fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
             Spacer(modifier = Modifier.height(8.dp))
 
-            SettingsRow("Contact Us", R.drawable.phone) {
+            SettingsRow(stringResource(R.string.contact_us), R.drawable.phone) {
                 // TODO: CONTACT US
             }
-            SettingsRow("FAQ", R.drawable.document) {
+            SettingsRow(stringResource(R.string.faq), R.drawable.document) {
                 navController.navigate(Screen.FAQ.route)
             }
-            SettingsRow("Favorites", R.drawable.document) {
+            SettingsRow(stringResource(R.string.favorite), R.drawable.document) {
                 navController.navigate(Screen.Favorites.route)
             }
         }
@@ -91,7 +94,7 @@ fun SettingsScreen(navController: NavController) {
                 .fillMaxWidth()
                 .height(50.dp)
         ) {
-            Text("Log Out", color = Color(0xFF7B61FF))
+            Text(stringResource(R.string.log_out), color = Color(0xFF7B61FF))
         }
     }
 }

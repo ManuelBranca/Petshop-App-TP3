@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import com.example.petshopapptp3.R
 
 @Composable
@@ -28,8 +29,8 @@ fun SocialButtons() {
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
-        SocialButton(text = "Google", icon = painterResource(id = R.drawable.google_icon))
-        SocialButton(text = "facebook", icon = painterResource(id = R.drawable.facebook_icon))
+        SocialButton(text = stringResource(R.string.google), icon = painterResource(id = R.drawable.google_icon))
+        SocialButton(text = stringResource(R.string.facebook), icon = painterResource(id = R.drawable.facebook_icon))
     }
 }
 

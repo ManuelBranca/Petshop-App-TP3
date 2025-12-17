@@ -8,7 +8,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
+import com.example.petshopapptp3.R
 
 @Composable
 fun DividerWithOr() {
@@ -18,7 +20,7 @@ fun DividerWithOr() {
     ) {
         HorizontalDivider(modifier = Modifier.weight(1f))
         Text(
-            text = "  or  ",
+            text = stringResource(R.string.or),
             color = Color.Gray,
             fontSize = 12.sp
         )

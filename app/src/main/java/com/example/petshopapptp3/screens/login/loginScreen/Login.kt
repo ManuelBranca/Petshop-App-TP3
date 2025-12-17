@@ -74,7 +74,7 @@ fun LoginScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(24.dp))
 
         InputField(
-            label = "Password",
+            label = stringResource(R.string.password),
             value = password,
             onValueChange = {
                 password = it
@@ -90,7 +90,7 @@ fun LoginScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(15.dp))
         SocialButtons()
         Spacer(modifier = Modifier.height(15.dp))
-        ClickeableText("Forgot Your Password?", onClick = {
+        ClickeableText(stringResource(R.string.forgot_password), onClick = {
             navController.navigate(Screen.ForgotPasswordEmail.route)
         })
         Spacer(modifier = Modifier.height(15.dp))
@@ -109,14 +109,13 @@ fun LoginScreen(navController: NavController) {
 
                 auth.signInWithEmailAndPassword(email.trim(), password)
                     .addOnSuccessListener {
-                        // OJO: asegurate que Screen.Home.route exista en tu NavHost
                         navController.navigate(Screen.Home.route) {
                             popUpTo(Screen.Login.route) { inclusive = true }
                             launchSingleTop = true
                         }
                     }
                     .addOnFailureListener { e ->
-                        Toast.makeText(context, e.message ?: "Error al iniciar sesión", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, e.message ?: context.getString(R.string.error_al_iniciar_sesi_n), Toast.LENGTH_LONG).show()
                     }
             }
         )

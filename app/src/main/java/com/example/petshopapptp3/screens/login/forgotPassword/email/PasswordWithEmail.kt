@@ -43,7 +43,7 @@ fun PasswordWithEmail(onLoginClick: () -> Unit, navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.height(50.dp))
-        TitleSection("Forgot Password")
+        TitleSection(stringResource(R.string.forgot_password))
         Spacer(modifier = Modifier.height(30.dp))
         SubtitleSection(stringResource(R.string.login_SubTitle_General))
         Spacer(modifier = Modifier.height(30.dp))

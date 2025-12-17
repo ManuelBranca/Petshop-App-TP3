@@ -13,9 +13,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.petshopapptp3.R
 import com.example.petshopapptp3.components.homePage.cart.CartItem
 import com.example.petshopapptp3.components.homePage.cart.CartSummary
 import com.example.petshopapptp3.components.homePage.cart.CartTopBar
@@ -37,7 +39,7 @@ fun CartScreen(
             .background(Color.White)
             .padding(16.dp)
     ) {
-        ArrowTitle("Cart") { navController.navigate(Screen.Home.route) }
+        ArrowTitle(stringResource(R.string.cart)) { navController.navigate(Screen.Home.route) }
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -54,7 +56,7 @@ fun CartScreen(
             IconButton(onClick = {
                 cartViewModel.clearEverything()
             }) {
-                Icon(Icons.Default.Delete, contentDescription = "Eliminar carrito", tint = Color.Red)
+                Icon(Icons.Default.Delete, contentDescription = stringResource(R.string.eliminar_carrito), tint = Color.Red)
             }
 
             val total = cartItems.sumOf { it.price * it.quantity }
@@ -78,7 +80,7 @@ fun CartScreen(
 
         } else {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Text("El carrito está vacío.")
+                Text(stringResource(R.string.el_carrito_est_vac_o))
             }
         }
     }

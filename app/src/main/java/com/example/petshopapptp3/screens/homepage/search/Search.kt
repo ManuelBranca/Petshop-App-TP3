@@ -17,25 +17,29 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.petshopapptp3.R
 import com.example.petshopapptp3.components.shared.ArrowTitle
 
 @Composable
 fun SearchScreen(navController: NavController) {
     var searchQuery by remember { mutableStateOf("") }
 
-    val categories = listOf("Feed", "Toys", "Accessories")
+    val categories = listOf(stringResource(R.string.feed), stringResource(R.string.toys), stringResource(R.string.accessories))
     var selectedCategory by remember { mutableStateOf("Feed") }
+
+    val royal = stringResource(R.string.royal_canin_persian_500g);
 
     var recentSearches by remember {
         mutableStateOf(
             listOf(
-                "Royal Canin Persian 500g",
-                "Royal Canin Persian 500g",
-                "Royal Canin Persian 500g"
+                royal,
+                royal,
+                royal
             )
         )
     }
@@ -45,7 +49,7 @@ fun SearchScreen(navController: NavController) {
             .fillMaxSize()
             .padding(horizontal = 16.dp, vertical = 12.dp)
     ) {
-        ArrowTitle("Search"){
+        ArrowTitle(stringResource(R.string.search)){
             navController.popBackStack()
         }
 
@@ -54,7 +58,7 @@ fun SearchScreen(navController: NavController) {
         OutlinedTextField(
             value = searchQuery,
             onValueChange = { searchQuery = it },
-            placeholder = { Text("Search your Product") },
+            placeholder = { Text(stringResource(R.string.search_your_product)) },
             leadingIcon = {
                 Icon(Icons.Default.Search, contentDescription = null)
             },
@@ -111,7 +115,7 @@ fun SearchScreen(navController: NavController) {
                     }) {
                         Icon(
                             imageVector = Icons.Default.Close,
-                            contentDescription = "Remove"
+                            contentDescription = stringResource(R.string.remove)
                         )
                     }
                 }

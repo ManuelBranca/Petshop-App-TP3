@@ -68,21 +68,21 @@ fun CreateAccount(
         SubtitleSection(stringResource(R.string.login_SubTitle_General))
         Spacer(modifier = Modifier.height(24.dp))
 
-        InputField("Full Name", value = fullName, onValueChange = {
+        InputField(stringResource(R.string.full_name), value = fullName, onValueChange = {
             fullName = it
             if (it.isNotBlank()) fullNameError = false
         }, isError = fullNameError)
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        InputField("Email", value = email, onValueChange = {
+        InputField(stringResource(R.string.email), value = email, onValueChange = {
             email = it
             if (it.isNotBlank()) emailError = false
         }, isError = emailError)
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        InputField("Password", value = password, onValueChange = {
+        InputField(stringResource(R.string.password), value = password, onValueChange = {
             password = it
             if (it.isNotBlank()) passwordError = false
         }, isPassword = true, isError = passwordError)
@@ -95,10 +95,10 @@ fun CreateAccount(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Checkbox(checked = checked, onCheckedChange = onCheckedChange)
-            Text("I Agree to the ")
-            ClickeableText("Terms of service ", onClick = onTermsClick)
+            Text(stringResource(R.string.i_agree_to_the))
+            ClickeableText(stringResource(R.string.terms_of_service), onClick = onTermsClick)
             Text("And ")
-            ClickeableText("Privacy Policy ", onClick = onPrivacyClick)
+            ClickeableText(stringResource(R.string.privacy_policy), onClick = onPrivacyClick)
         }
 
         Spacer(modifier = Modifier.height(24.dp))

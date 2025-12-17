@@ -12,7 +12,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.petshopapptp3.viewmodel.ProductViewModel
 import androidx.compose.foundation.lazy.items
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.petshopapptp3.R
 import com.example.petshopapptp3.components.shared.ArrowTitle
 import com.example.petshopapptp3.components.shared.ProductCard
 import com.example.petshopapptp3.navigation.Screen
@@ -35,7 +37,7 @@ fun BestSellerScreen(navController: NavController) {
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         item {
-            ArrowTitle("Best Seller"){
+            ArrowTitle(stringResource(R.string.best_seller)){
                 navController.popBackStack()
             }
 

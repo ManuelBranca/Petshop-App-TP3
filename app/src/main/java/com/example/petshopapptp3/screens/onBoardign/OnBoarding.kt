@@ -50,7 +50,7 @@ fun OnBoarding(navController: NavController) {
 
         Image(
             painter = painterResource(id = R.drawable.illustration),
-            contentDescription = "Illustration",
+            contentDescription = stringResource(R.string.illustration),
             modifier = Modifier
                 .size(350.dp)
                 .padding(top = 24.dp)
@@ -71,7 +71,7 @@ fun OnBoarding(navController: NavController) {
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "● ○ ○",
+            text = stringResource(R.string.welcome_circles),
             fontSize = 18.sp,
             color = purple,
             modifier = Modifier.padding(top = 24.dp)

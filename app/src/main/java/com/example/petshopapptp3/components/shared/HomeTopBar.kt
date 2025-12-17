@@ -16,9 +16,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.petshopapptp3.R
 import com.example.petshopapptp3.navigation.Screen
 
 @Composable
@@ -32,9 +34,9 @@ fun HomeTopBar(navController: NavController,
         Column (
             modifier = Modifier.clickable { onLocationClick() }
         ) {
-            Text("Location", fontSize = 12.sp, color = Color.Gray)
+            Text(stringResource(R.string.location), fontSize = 12.sp, color = Color.Gray)
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text("Jebres, Surakarta", fontWeight = FontWeight.Bold)
+                Text(stringResource(R.string.jebres_surakarta), fontWeight = FontWeight.Bold)
                 Icon(Icons.Default.ArrowDropDown, contentDescription = null)
             }
         }

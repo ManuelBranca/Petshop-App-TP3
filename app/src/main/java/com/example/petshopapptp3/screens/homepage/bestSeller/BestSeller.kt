@@ -12,9 +12,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.petshopapptp3.viewmodel.ProductViewModel
 import androidx.compose.foundation.lazy.items
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.petshopapptp3.components.shared.ArrowTitle
 import com.example.petshopapptp3.components.shared.ProductCard
 import com.example.petshopapptp3.navigation.Screen
+import com.example.petshopapptp3.viewmodel.FavoritesViewModel
 
 @Composable
 fun BestSellerScreen(navController: NavController) {
@@ -22,6 +24,8 @@ fun BestSellerScreen(navController: NavController) {
     val products by viewModel.products.collectAsState()
     val purple = Color(0xFF7B61FF)
     val gray = Color(0xFFF6F6F6)
+    val favVm: FavoritesViewModel = hiltViewModel()
+    val favoriteIds by favVm.favoriteIds.collectAsState()
 
     LazyColumn(
         modifier = Modifier
@@ -49,6 +53,8 @@ fun BestSellerScreen(navController: NavController) {
                         purple = purple,
                         gray = gray,
                         modifier = Modifier.weight(1f),
+                        isFavorite = favoriteIds.contains(product.id),
+                        onFavoriteClick = { favVm.toggle(product) },
                         onClick = { navController.navigate(Screen.ProductDetail.createRoute(product.id)) }
                     )
                 }

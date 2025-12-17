@@ -29,6 +29,9 @@ import com.example.petshopapptp3.components.shared.ClickeableText
 import com.example.petshopapptp3.navigation.Screen
 import com.example.petshopapptp3.ui.theme.disableButton
 import com.example.petshopapptp3.ui.theme.purple
+import android.widget.Toast
+import androidx.compose.ui.platform.LocalContext
+import com.google.firebase.auth.FirebaseAuth
 
 @Composable
 fun LoginScreen(navController: NavController) {
@@ -40,6 +43,9 @@ fun LoginScreen(navController: NavController) {
 
     val allFieldsFilled = email.isNotBlank() && password.isNotBlank()
     val buttonColor = if (allFieldsFilled) purple else disableButton
+
+    val context = LocalContext.current
+    val auth = remember { FirebaseAuth.getInstance() }
 
     Column(
         modifier = Modifier
@@ -99,9 +105,19 @@ fun LoginScreen(navController: NavController) {
                 emailError = email.isBlank()
                 passwordError = password.isBlank()
 
-                if (allFieldsFilled) {
-                    navController.navigate(Screen.Home.route)
-                }
+                if (!allFieldsFilled) return@StartButton
+
+                auth.signInWithEmailAndPassword(email.trim(), password)
+                    .addOnSuccessListener {
+                        // OJO: asegurate que Screen.Home.route exista en tu NavHost
+                        navController.navigate(Screen.Home.route) {
+                            popUpTo(Screen.Login.route) { inclusive = true }
+                            launchSingleTop = true
+                        }
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(context, e.message ?: "Error al iniciar sesión", Toast.LENGTH_LONG).show()
+                    }
             }
         )
     }

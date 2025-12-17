@@ -8,6 +8,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -22,6 +23,7 @@ import coil.compose.rememberAsyncImagePainter
 import com.example.petshopapptp3.components.buttons.StartButton
 import com.example.petshopapptp3.components.shared.ArrowTitle
 import com.example.petshopapptp3.data.remote.Product
+import com.example.petshopapptp3.viewmodel.FavoritesViewModel
 import com.example.petshopapptp3.viewmodel.CartViewModel
 import kotlinx.coroutines.launch
 
@@ -36,6 +38,8 @@ fun ProductDetailScreen(
     var quantity by remember { mutableStateOf(1) }
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
+    val favVm: FavoritesViewModel = hiltViewModel()
+    val favoriteIds by favVm.favoriteIds.collectAsState()
 
     Scaffold(
         snackbarHost = {
@@ -57,7 +61,12 @@ fun ProductDetailScreen(
                 ArrowTitle("Product Detail") {
                     navController.popBackStack()
                 }
-                Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = null)
+                IconButton(onClick = { favVm.toggle(product) }) {
+                    Icon(
+                        imageVector = if (favoriteIds.contains(product.id)) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                        contentDescription = null
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(16.dp))

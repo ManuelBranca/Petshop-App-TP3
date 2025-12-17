@@ -17,7 +17,9 @@ import com.example.petshopapptp3.navigation.Screen
 fun ProductRow(
     rowProducts: List<Product>,
     purple: Color,
-    navController: NavController
+    navController: NavController,
+    favoriteIds: Set<Int>,
+    onToggleFavorite: (Product) -> Unit
 ) {
     val gray = Color(0xFFF6F6F6)
 
@@ -31,6 +33,8 @@ fun ProductRow(
                 purple = purple,
                 gray = gray,
                 modifier = Modifier.weight(1f),
+                isFavorite = favoriteIds.contains(product.id),
+                onFavoriteClick = { onToggleFavorite(product) },
                 onClick = {
                     navController.navigate(Screen.ProductDetail.createRoute(product.id))
                 }

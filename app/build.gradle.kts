@@ -2,8 +2,16 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("org.jetbrains.kotlin.kapt")
+    //id("org.jetbrains.kotlin.kapt")
+
+
     alias(libs.plugins.hilt)
+
+    id("org.jetbrains.kotlin.kapt")
+
+    id("com.google.devtools.ksp")
+
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -68,11 +76,28 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
     implementation(libs.coil)
-    implementation("androidx.room:room-runtime:2.6.1")
-    kapt("androidx.room:room-compiler:2.6.1")
-    implementation("androidx.room:room-ktx:2.6.1")
+    val roomVersion = "2.8.4"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    ksp("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    //implementation("androidx.room:room-runtime:2.6.1")
+    //kapt("androidx.room:room-compiler:2.6.1")
+    //implementation("androidx.room:room-ktx:2.6.1")
     implementation(libs.hilt)
     kapt(libs.hiltCompiler)
+    //ksp(libs.hiltCompiler)
+
     implementation(libs.androidx.hilt.navigation.compose)
 
+    // Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:34.5.0"))
+
+    // Firestore (sin -ktx)
+    implementation("com.google.firebase:firebase-firestore")
+
+    // Recomendado para identificar usuario y guardar favoritos “por usuario”
+    implementation("com.google.firebase:firebase-auth")
+
+    // Para poder usar Task.await() con coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.10.2")
 }

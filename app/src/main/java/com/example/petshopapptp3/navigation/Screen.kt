@@ -25,6 +25,7 @@ sealed class Screen(val route: String) {
     object ChangeEmail: Screen("email")
     object Security: Screen("security")
     object FAQ: Screen("faq")
+    object Favorites : Screen("favorites")
 
 
     object ProductDetail : Screen("product_detail/{productId}") {

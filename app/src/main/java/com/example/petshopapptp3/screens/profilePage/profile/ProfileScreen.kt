@@ -28,9 +28,9 @@ import com.example.petshopapptp3.R
 import com.example.petshopapptp3.components.profile.ModeButton
 import com.example.petshopapptp3.components.profile.StatItem
 import com.example.petshopapptp3.components.profile.FilterChip
-import com.example.petshopapptp3.components.shared.ClickeableText
 import com.example.petshopapptp3.components.shared.ProductRow
 import com.example.petshopapptp3.navigation.Screen
+import com.example.petshopapptp3.viewmodel.FavoritesViewModel
 import com.example.petshopapptp3.viewmodel.ProductViewModel
 
 @Composable
@@ -41,6 +41,9 @@ fun ProfileScreen(navController: NavController) {
 
     val backgroundColor = Color.White
     val purple = Color(0xFF7B61FF)
+
+    val favVm: FavoritesViewModel = hiltViewModel()
+    val favoriteIds by favVm.favoriteIds.collectAsState()
 
     Box(
         modifier = Modifier
@@ -158,7 +161,9 @@ fun ProfileScreen(navController: NavController) {
                 ProductRow(
                     rowProducts = rowProducts,
                     purple = purple,
-                    navController = navController
+                    navController = navController ,
+                    favoriteIds = favoriteIds,
+                    onToggleFavorite = { product -> favVm.toggle(product) }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
             }

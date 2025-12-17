@@ -31,6 +31,7 @@ import com.example.petshopapptp3.screens.profilePage.account.AccountScreen
 import com.example.petshopapptp3.screens.profilePage.change.ChangeEmail
 import com.example.petshopapptp3.screens.profilePage.change.ChangePassword
 import com.example.petshopapptp3.screens.profilePage.faq.FaqScreen
+import com.example.petshopapptp3.screens.profilePage.favorite.FavoritesScreen
 import com.example.petshopapptp3.screens.profilePage.privacy.PrivacyView
 import com.example.petshopapptp3.screens.profilePage.profile.ProfileScreen
 import com.example.petshopapptp3.screens.profilePage.security.SecurityScreen
@@ -112,6 +113,8 @@ fun NavGraph(navController: NavHostController) {
         composable (Screen.ChangePassword.route){ ChangePassword(navController) }
         composable (Screen.Security.route){ SecurityScreen(navController) }
         composable (Screen.FAQ.route){ FaqScreen(navController) }
+        composable(Screen.Favorites.route) { FavoritesScreen(navController) }
+
 
     }
 }

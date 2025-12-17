@@ -77,6 +77,9 @@ fun SettingsScreen(navController: NavController) {
             SettingsRow("FAQ", R.drawable.document) {
                 navController.navigate(Screen.FAQ.route)
             }
+            SettingsRow("Favorites", R.drawable.document) {
+                navController.navigate(Screen.Favorites.route)
+            }
         }
 
         // Botón Log Out anclado abajo

@@ -1,8 +1,8 @@
 package com.example.petshopapptp3.components.shared
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -34,11 +34,11 @@ fun InputField(
         OutlinedTextField(
             value = value,
             onValueChange = onValueChange,
-            label = { Text(label) },
             placeholder = { Text(label) },
+
             modifier = Modifier
                 .fillMaxWidth()
-                .height(d.inputHeight),
+                .defaultMinSize(minHeight = d.inputHeight),
             shape = RoundedCornerShape(d.cardRadius),
             singleLine = true,
             isError = isError,
@@ -54,12 +54,12 @@ fun InputField(
                 unfocusedBorderColor = Color.LightGray,
                 errorBorderColor = Color.Red,
 
-                focusedLabelColor = purple,
-                unfocusedLabelColor = Color.Gray,
-                errorLabelColor = Color.Red,
-
                 focusedPlaceholderColor = Color.Gray,
-                unfocusedPlaceholderColor = Color.Gray
+                unfocusedPlaceholderColor = Color.Gray,
+
+                focusedContainerColor = Color.White,
+                unfocusedContainerColor = Color.White,
+                disabledContainerColor = Color.White
             )
         )
 

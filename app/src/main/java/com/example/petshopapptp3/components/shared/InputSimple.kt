@@ -1,7 +1,7 @@
 package com.example.petshopapptp3.components.shared
 
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -17,7 +17,10 @@ import com.example.petshopapptp3.ui.theme.purple
 import com.example.petshopapptp3.ui.theme.rememberPhoneDimens
 
 @Composable
-fun InputSimple(inputName: String = stringResource(R.string.email), isPassword: Boolean = false) {
+fun InputSimple(
+    inputName: String = stringResource(R.string.email),
+    isPassword: Boolean = false
+) {
     val d = rememberPhoneDimens()
     var value by remember { mutableStateOf("") }
 
@@ -27,7 +30,7 @@ fun InputSimple(inputName: String = stringResource(R.string.email), isPassword: 
         placeholder = { Text(inputName) },
         modifier = Modifier
             .fillMaxWidth()
-            .height(d.inputHeight),
+            .defaultMinSize(minHeight = d.inputHeight),
         shape = RoundedCornerShape(d.cardRadius),
         singleLine = true,
         visualTransformation = if (isPassword) PasswordVisualTransformation() else VisualTransformation.None,
@@ -36,7 +39,10 @@ fun InputSimple(inputName: String = stringResource(R.string.email), isPassword: 
             unfocusedTextColor = Color.Black,
             cursorColor = purple,
             focusedBorderColor = purple,
-            unfocusedBorderColor = Color.LightGray
+            unfocusedBorderColor = Color.LightGray,
+            focusedContainerColor = Color.White,
+            unfocusedContainerColor = Color.White,
+            disabledContainerColor = Color.White
         )
     )
 }

@@ -1,18 +1,19 @@
 package com.example.petshopapptp3.screens.homepage.home
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.petshopapptp3.viewmodel.ProductViewModel
-import androidx.compose.foundation.lazy.items
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.petshopapptp3.components.homePage.BestSellerHeader
 import com.example.petshopapptp3.components.homePage.CategorySection
@@ -21,11 +22,13 @@ import com.example.petshopapptp3.components.shared.HomeTopBar
 import com.example.petshopapptp3.components.shared.ProductRow
 import com.example.petshopapptp3.navigation.Screen
 import com.example.petshopapptp3.screens.homepage.location.Location
+import com.example.petshopapptp3.ui.theme.rememberPhoneDimens
 import com.example.petshopapptp3.viewmodel.FavoritesViewModel
-
+import com.example.petshopapptp3.viewmodel.ProductViewModel
 
 @Composable
 fun HomeScreen(navController: NavController) {
+    val d = rememberPhoneDimens()
     val purple = Color(0xFF7B61FF)
 
     val productVm: ProductViewModel = hiltViewModel()
@@ -38,9 +41,11 @@ fun HomeScreen(navController: NavController) {
     if (showLocationModal) Location(onDismiss = { showLocationModal = false })
 
     LazyColumn(
-        modifier = Modifier.fillMaxSize().background(Color.White),
-        contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White),
+        contentPadding = PaddingValues(d.pad),
+        verticalArrangement = Arrangement.spacedBy(d.gapLg)
     ) {
         item { HomeTopBar(navController, onLocationClick = { showLocationModal = true }) }
         item { PromoCard(purple) }
@@ -57,12 +62,9 @@ fun HomeScreen(navController: NavController) {
             )
         }
 
-        item { Spacer(modifier = Modifier.height(24.dp)) }
+        item { Spacer(modifier = Modifier.height(d.gapLg * 1.5f)) } // antes 24.dp
     }
 }
-
-
-
 
 @Preview(showBackground = true)
 @Composable

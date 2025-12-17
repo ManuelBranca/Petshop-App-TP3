@@ -14,38 +14,42 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.petshopapptp3.R
+import com.example.petshopapptp3.ui.theme.rememberPhoneDimens
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Location(onDismiss: () -> Unit) {
+    val d = rememberPhoneDimens()
+
     ModalBottomSheet(
         onDismissRequest = onDismiss,
-        shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp),
+        shape = RoundedCornerShape(topStart = d.cardRadius + 8.dp, topEnd = d.cardRadius + 8.dp),
         containerColor = Color.White
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(24.dp)
+                .padding(d.pad + 8.dp)
         ) {
-
             Box(
                 modifier = Modifier
-                    .size(width = 40.dp, height = 4.dp)
+                    .size(width = d.iconSize * 2f, height = 4.dp)
                     .background(Color.LightGray, RoundedCornerShape(2.dp))
                     .align(Alignment.CenterHorizontally)
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(d.gapLg))
 
-            Text(stringResource(R.string.location), fontWeight = FontWeight.Bold, fontSize = 18.sp)
+            Text(
+                text = stringResource(R.string.location),
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp
+            )
 
-            Spacer(modifier = Modifier.height(16.dp))
-
+            Spacer(modifier = Modifier.height(d.gapLg))
 
             var searchText by remember { mutableStateOf("") }
 
@@ -54,49 +58,53 @@ fun Location(onDismiss: () -> Unit) {
                 onValueChange = { searchText = it },
                 placeholder = { Text(stringResource(R.string.search_your_location)) },
                 leadingIcon = {
-                    Icon(Icons.Default.Search, contentDescription = null)
+                    Icon(
+                        imageVector = Icons.Default.Search,
+                        contentDescription = null,
+                        modifier = Modifier.size(d.iconSize)
+                    )
                 },
-                shape = RoundedCornerShape(12.dp),
-                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(d.cardRadius - 4.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .defaultMinSize(minHeight = d.inputHeight),
                 colors = OutlinedTextFieldDefaults.colors(
                     unfocusedBorderColor = Color(0xFFE0E0E0),
                     focusedBorderColor = Color(0xFF7B61FF)
-                )
+                ),
+                singleLine = true
             )
 
-
-            Spacer(modifier = Modifier.height(24.dp))
-
+            Spacer(modifier = Modifier.height(d.gapLg + 8.dp))
 
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { },
+                    .clickable { }
+                    .padding(vertical = d.gap),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
-                    Icons.Default.LocationOn,
+                    imageVector = Icons.Default.LocationOn,
                     contentDescription = null,
-                    tint = Color.Black
+                    tint = Color.Black,
+                    modifier = Modifier.size(d.iconSize)
                 )
-                Spacer(modifier = Modifier.width(12.dp))
+                Spacer(modifier = Modifier.width(d.gap))
                 Column {
-                    Text(stringResource(R.string.track_your_location), fontWeight = FontWeight.Medium)
                     Text(
-                        stringResource(R.string.automatically_selects_your_current_location),
+                        text = stringResource(R.string.track_your_location),
+                        fontWeight = FontWeight.Medium
+                    )
+                    Text(
+                        text = stringResource(R.string.automatically_selects_your_current_location),
                         fontSize = 12.sp,
                         color = Color.Gray
                     )
                 }
             }
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(d.gapLg * 2f))
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ShowLocation(){
-    Location {  }
 }

@@ -134,5 +134,8 @@
     <string name="settings_page">Settings Page</string>
     <string name="help">Help</string>
     <string name="log_out">Log Out</string>
+    <string name="qty">Qty: %1$s</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="and">"And "</string>
 
 </resources>

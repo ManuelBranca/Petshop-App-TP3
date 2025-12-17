@@ -10,42 +10,45 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.petshopapptp3.R
-
+import com.example.petshopapptp3.ui.theme.rememberPhoneDimens
 
 @Composable
 fun PromoCard(purple: Color) {
+    val d = rememberPhoneDimens()
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(120.dp)
-            .background(purple, RoundedCornerShape(16.dp))
+            .height(d.iconSize * 6f) // aprox 120/132/144
+            .background(purple, RoundedCornerShape(d.cardRadius))
     ) {
         Image(
             painter = painterResource(id = R.drawable.comida_canina),
             contentDescription = null,
             modifier = Modifier
                 .align(Alignment.CenterStart)
-                .padding(16.dp)
-                .size(80.dp)
+                .padding(d.cardPad)
+                .size(d.iconSize * 4f) // antes 80.dp
         )
+
         Column(
             modifier = Modifier
                 .align(Alignment.CenterEnd)
-                .padding(16.dp)
+                .padding(d.cardPad)
                 .fillMaxHeight(),
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                "Royal Canin\nAdult Pomeranian",
+                stringResource(R.string.royal_canin_adult_pomeranian),
                 fontWeight = FontWeight.Bold,
                 color = Color.White
             )
             Text(
-                "Get an interesting promo\nhere, without conditions",
+                stringResource(R.string.get_an_interesting_promo_here_without_conditions),
                 fontSize = 12.sp,
                 color = Color.White.copy(alpha = 0.8f)
             )

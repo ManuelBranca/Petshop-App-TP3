@@ -14,17 +14,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.petshopapptp3.R
+import com.example.petshopapptp3.ui.theme.rememberPhoneDimens
 
 @Composable
 fun SettingsRow(title: String, iconRes: Int, onClick: () -> Unit) {
+    val d = rememberPhoneDimens()
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onClick() }
-            .padding(vertical = 12.dp),
+            .padding(vertical = d.gap),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
@@ -32,16 +34,16 @@ fun SettingsRow(title: String, iconRes: Int, onClick: () -> Unit) {
             Icon(
                 painter = painterResource(id = iconRes),
                 contentDescription = null,
-                modifier = Modifier.size(24.dp)
+                modifier = Modifier.size(d.iconSize * 1.15f) // antes 24.dp
             )
-            Spacer(modifier = Modifier.width(12.dp))
+            Spacer(modifier = Modifier.width(d.gap))
             Text(title, fontSize = 14.sp)
         }
 
         Icon(
             painter = painterResource(id = R.drawable.arrow_right),
             contentDescription = null,
-            modifier = Modifier.size(16.dp)
+            modifier = Modifier.size(d.iconSize * 0.8f) // antes 16.dp
         )
     }
 }

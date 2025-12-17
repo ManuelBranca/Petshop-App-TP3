@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -33,13 +34,14 @@ import com.example.petshopapptp3.R
 
 @Composable
 fun FaqScreen(navController: NavController) {
+    val security = stringResource(R.string.security)
     val faqItems = remember {
         listOf(
-            "Security",
-            "Security",
-            "Security",
-            "Security",
-            "Security"
+            security,
+            security,
+            security,
+            security,
+            security
         )
     }
 
@@ -55,7 +57,7 @@ fun FaqScreen(navController: NavController) {
             modifier = Modifier.fillMaxWidth()
         ) {
             IconButton(onClick = { navController.popBackStack() }) {
-                Icon(painterResource(R.drawable.back), contentDescription = "Back", modifier = Modifier.size(16.dp) )
+                Icon(painterResource(R.drawable.back), contentDescription = stringResource(R.string.back), modifier = Modifier.size(16.dp) )
 
             }
             Spacer(modifier = Modifier.weight(1f))
@@ -104,7 +106,7 @@ fun FaqItem(
             )
             Icon(
                 painter = painterResource(id = if (isExpanded) R.drawable.arrow_up else R.drawable.arrow_down),
-                contentDescription = "Expand",
+                contentDescription = stringResource(R.string.expand),
                 tint = Color.Gray,
                 modifier = Modifier.size(16.dp)
             )
@@ -113,7 +115,7 @@ fun FaqItem(
         }
         if (isExpanded) {
             Text(
-                text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum sapien sodales mi sagittis hendrerit.",
+                text = stringResource(R.string.lorem_ipsum_small),
                 style = MaterialTheme.typography.bodySmall,
                 color = Color.Gray,
                 modifier = Modifier.padding(top = 8.dp)

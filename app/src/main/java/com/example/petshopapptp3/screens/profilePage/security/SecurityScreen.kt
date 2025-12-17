@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -22,12 +23,12 @@ fun SecurityScreen(navController: NavController){
             .fillMaxSize()
             .padding(16.dp)
     ){
-        ArrowTitle("Security"){
+        ArrowTitle(stringResource(R.string.security)){
             navController.popBackStack()
         }
-        Text("Security", fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
-        SettingsRow("Change Password", R.drawable.key , onClick = { navController.navigate(Screen.ChangePassword.route) })
-        SettingsRow("Change Email", R.drawable.key , onClick = { navController.navigate(Screen.ChangeEmail.route) })
+        Text(stringResource(R.string.security), fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
+        SettingsRow(stringResource(R.string.change_password), R.drawable.key , onClick = { navController.navigate(Screen.ChangePassword.route) })
+        SettingsRow(stringResource(R.string.change_email), R.drawable.key , onClick = { navController.navigate(Screen.ChangeEmail.route) })
 
     }
 }

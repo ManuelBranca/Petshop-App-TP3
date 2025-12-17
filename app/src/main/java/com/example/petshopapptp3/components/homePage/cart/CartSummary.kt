@@ -1,6 +1,5 @@
 package com.example.petshopapptp3.components.homePage.cart
 
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,16 +13,23 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.petshopapptp3.R
 import com.example.petshopapptp3.navigation.Screen
+import com.example.petshopapptp3.ui.theme.rememberPhoneDimens
 
 @Composable
-fun CartSummary(cartItems: List<CartItem>,totalPrice: Double, purple: Color, navController: NavController) {
+fun CartSummary(
+    cartItems: List<CartItem>,
+    totalPrice: Double,
+    purple: Color,
+    navController: NavController
+) {
+    val d = rememberPhoneDimens()
     val totalItems = cartItems.size
-
 
     Column(
         modifier = Modifier.fillMaxWidth()
@@ -32,38 +38,44 @@ fun CartSummary(cartItems: List<CartItem>,totalPrice: Double, purple: Color, nav
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text("$totalItems Items")
-            Text("$${"%.2f".format(totalPrice)}")
+            Text(stringResource(R.string.total_items, totalItems))
+            Text(stringResource(R.string.total_price, "%.2f".format(totalPrice)))
         }
-        Spacer(modifier = Modifier.height(4.dp))
+
+        Spacer(modifier = Modifier.height(d.gap / 2))
+
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text("Tax")
-            Text("$0.00")
+            Text(stringResource(R.string.tax))
+            Text(stringResource(R.string.Cero))
         }
-        Spacer(modifier = Modifier.height(8.dp))
+
+        Spacer(modifier = Modifier.height(d.gap))
+
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text("Totals", fontWeight = FontWeight.Bold)
+            Text(stringResource(R.string.totals), fontWeight = FontWeight.Bold)
             Text(
-                "$${"%.2f".format(totalPrice)}",
+                stringResource(R.string.total_price, "%.2f".format(totalPrice)),
                 fontWeight = FontWeight.Bold
             )
         }
-        Spacer(modifier = Modifier.height(12.dp))
+
+        Spacer(modifier = Modifier.height(d.gapLg))
+
         Button(
             onClick = { navController.navigate(Screen.PaymentAdd.createRoute(false)) },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(50.dp),
+                .height(d.buttonHeight),
             colors = ButtonDefaults.buttonColors(containerColor = purple),
-            shape = RoundedCornerShape(12.dp)
+            shape = RoundedCornerShape(d.cardRadius)
         ) {
-            Text("Checkout", color = Color.White, fontSize = 16.sp)
+            Text(stringResource(R.string.checkout), color = Color.White, fontSize = 16.sp)
         }
     }
 }

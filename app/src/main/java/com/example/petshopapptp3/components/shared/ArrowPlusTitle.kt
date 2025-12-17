@@ -10,18 +10,23 @@ import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import com.example.petshopapptp3.R
 import com.example.petshopapptp3.components.paymentMethod.PaymentTitle
+import com.example.petshopapptp3.ui.theme.rememberPhoneDimens
 
 @Composable
-fun ArrowTitle (Text: String = "Payment Method" ,onBack: () -> Unit = {} ){
-    Row(
-        verticalAlignment = Alignment.CenterVertically
-    ) {
+fun ArrowTitle(
+    text: String = stringResource(R.string.payment_method),
+    onBack: () -> Unit = {}
+) {
+    val d = rememberPhoneDimens()
+
+    Row(verticalAlignment = Alignment.CenterVertically) {
         IconButton(onClick = onBack) {
-            Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+            Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.back))
         }
-        Spacer(modifier = Modifier.width(8.dp))
-        PaymentTitle(Text)
+        Spacer(modifier = Modifier.width(d.gap))
+        PaymentTitle(text)
     }
 }

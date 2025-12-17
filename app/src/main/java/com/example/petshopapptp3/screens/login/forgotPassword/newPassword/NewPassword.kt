@@ -7,26 +7,27 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.petshopapptp3.components.shared.SubtitleSection
-import com.example.petshopapptp3.components.shared.TitleSection
 import com.example.petshopapptp3.R
 import com.example.petshopapptp3.components.buttons.StartButton
 import com.example.petshopapptp3.components.loginComponents.HaveAccount
 import com.example.petshopapptp3.components.shared.InputField
+import com.example.petshopapptp3.components.shared.SubtitleSection
+import com.example.petshopapptp3.components.shared.TitleSection
 import com.example.petshopapptp3.navigation.Screen
 import com.example.petshopapptp3.ui.theme.disableButton
 import com.example.petshopapptp3.ui.theme.purple
+import com.example.petshopapptp3.ui.theme.rememberPhoneDimens
 
 @Composable
 fun NewPassword(onLoginClick: () -> Unit = { }, navController: NavController) {
+    val d = rememberPhoneDimens()
+
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
     var passwordError by remember { mutableStateOf(false) }
@@ -39,18 +40,22 @@ fun NewPassword(onLoginClick: () -> Unit = { }, navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 24.dp)
+            .padding(horizontal = d.pad + 8.dp)
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.height(50.dp))
-        TitleSection("Forgot Password")
-        Spacer(modifier = Modifier.height(30.dp))
+        Spacer(modifier = Modifier.height(d.gapLg * 2f))
+
+        TitleSection(stringResource(R.string.forgot_password))
+
+        Spacer(modifier = Modifier.height(d.gapLg))
+
         SubtitleSection(stringResource(R.string.login_SubTitle_General))
-        Spacer(modifier = Modifier.height(30.dp))
+
+        Spacer(modifier = Modifier.height(d.gapLg))
 
         InputField(
-            label = "New Password",
+            label = stringResource(R.string.new_password),
             value = password,
             onValueChange = {
                 password = it
@@ -62,10 +67,10 @@ fun NewPassword(onLoginClick: () -> Unit = { }, navController: NavController) {
             showError = true
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(d.gap))
 
         InputField(
-            label = "Confirm Password",
+            label = stringResource(R.string.confirm_password),
             value = confirmPassword,
             onValueChange = {
                 confirmPassword = it
@@ -74,16 +79,17 @@ fun NewPassword(onLoginClick: () -> Unit = { }, navController: NavController) {
             },
             isPassword = true,
             isError = confirmPasswordError || mismatchError,
-            showError = true,
+            showError = true
         )
+        Spacer(modifier = Modifier.weight(1f))
 
-        Spacer(modifier = Modifier.height(300.dp))
-        HaveAccount(onLoginClick = {navController.navigate(Screen.Login.route)})
-        Spacer(modifier = Modifier.height(16.dp))
+        HaveAccount(onLoginClick = { navController.navigate(Screen.Login.route) })
+
+        Spacer(modifier = Modifier.height(d.gap))
 
         StartButton(
-            Text = "Reset Password",
-            ButtonColor = buttonColor,
+            text = stringResource(R.string.reset_password),
+            buttonColor = buttonColor,
             onClick = {
                 passwordError = password.isBlank()
                 confirmPasswordError = confirmPassword.isBlank()
@@ -94,6 +100,7 @@ fun NewPassword(onLoginClick: () -> Unit = { }, navController: NavController) {
                 }
             }
         )
+
+        Spacer(modifier = Modifier.height(d.gapLg))
     }
 }
-

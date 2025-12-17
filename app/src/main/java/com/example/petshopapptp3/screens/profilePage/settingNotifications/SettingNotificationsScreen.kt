@@ -6,9 +6,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.petshopapptp3.R
 import com.example.petshopapptp3.components.shared.ArrowTitle
 
 @Composable
@@ -22,39 +24,39 @@ fun SettingNotificationsScreen(navController: NavController) {
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        ArrowTitle("Notification") {
+        ArrowTitle(stringResource(R.string.notification)) {
             navController.popBackStack()
         }
 
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(
-            text = "Social",
+            text = stringResource(R.string.social),
             style = MaterialTheme.typography.titleMedium.copy(fontSize = 16.sp),
             color = Color.Black
         )
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        NotificationRow("Liked Post", likedPost) {
+        NotificationRow(stringResource(R.string.liked_post), likedPost) {
             likedPost = it
         }
 
-        NotificationRow("New Message", newMessage) {
+        NotificationRow(stringResource(R.string.new_message), newMessage) {
             newMessage = it
         }
 
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(
-            text = "Store",
+            text = stringResource(R.string.store),
             style = MaterialTheme.typography.titleMedium.copy(fontSize = 16.sp),
             color = Color.Black
         )
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        NotificationRow("Item Sold", itemSold) {
+        NotificationRow(stringResource(R.string.item_sold), itemSold) {
             itemSold = it
         }
     }

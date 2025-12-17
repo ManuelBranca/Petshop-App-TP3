@@ -14,9 +14,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.petshopapptp3.R
 import com.example.petshopapptp3.components.buttons.StartButton
 import com.example.petshopapptp3.components.shared.ArrowTitle
 import com.example.petshopapptp3.components.shared.InputField
@@ -51,13 +53,13 @@ fun PaymentAdd(navController: NavController, fromSettings: Boolean) {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Start
             ) {
-                TitleSection("Add New Payment", 16.sp)
+                TitleSection(stringResource(R.string.add_new_payment), 16.sp)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
             InputField(
-                label = "Card Number",
+                label = stringResource(R.string.card_number),
                 value = cardNumber,
                 onValueChange = { cardNumber = it },
                 isError = showErrors && cardNumber.isBlank(),
@@ -67,7 +69,7 @@ fun PaymentAdd(navController: NavController, fromSettings: Boolean) {
             Spacer(modifier = Modifier.height(16.dp))
 
             InputField(
-                label = "Card Name",
+                label = stringResource(R.string.card_name),
                 value = cardName,
                 onValueChange = { cardName = it },
                 isError = showErrors && cardName.isBlank(),
@@ -77,7 +79,7 @@ fun PaymentAdd(navController: NavController, fromSettings: Boolean) {
             Spacer(modifier = Modifier.height(16.dp))
 
             InputField(
-                label = "Expired",
+                label = stringResource(R.string.expired),
                 value = expiryDate,
                 onValueChange = { expiryDate = it },
                 isError = showErrors && expiryDate.isBlank(),
@@ -87,7 +89,7 @@ fun PaymentAdd(navController: NavController, fromSettings: Boolean) {
             Spacer(modifier = Modifier.height(16.dp))
 
             InputField(
-                label = "CVV",
+                label = stringResource(R.string.cvv),
                 value = cvv,
                 onValueChange = { cvv = it },
                 isError = showErrors && cvv.isBlank(),
@@ -95,7 +97,7 @@ fun PaymentAdd(navController: NavController, fromSettings: Boolean) {
             )
         }
 
-        StartButton("Checkout", onClick = {
+        StartButton(stringResource(R.string.checkout), onClick = {
             if (cardNumber.isBlank() || cardName.isBlank() || expiryDate.isBlank() || cvv.isBlank()) {
                 showErrors = true
             } else {

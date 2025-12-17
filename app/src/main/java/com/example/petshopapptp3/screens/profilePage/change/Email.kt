@@ -9,8 +9,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.petshopapptp3.R
 import com.example.petshopapptp3.components.buttons.StartButton
 import com.example.petshopapptp3.components.shared.ArrowTitle
 import com.example.petshopapptp3.components.shared.InputSimple
@@ -25,17 +27,17 @@ fun ChangeEmail(navController: NavController) {
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Column {
-            ArrowTitle("Change Email") {
+            ArrowTitle(stringResource(R.string.change_email)) {
                 navController.popBackStack()
             }
             Spacer(modifier = Modifier.height(32.dp))
-            Text("New Email")
+            Text(stringResource(R.string.new_email))
             Spacer(modifier = Modifier.height(8.dp))
-            InputSimple("Abdul")
+            InputSimple(stringResource(R.string.abdul))
             Spacer(modifier = Modifier.height(32.dp))
         }
 
-        StartButton("Change Email", onClick = {
+        StartButton(stringResource(R.string.change_email), onClick = {
             navController.navigate(Screen.Login.route)
         })
     }

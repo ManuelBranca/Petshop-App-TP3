@@ -10,10 +10,12 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.petshopapptp3.R
 import com.example.petshopapptp3.components.buttons.StartButton
 import com.example.petshopapptp3.components.shared.SubtitleSection
 import com.example.petshopapptp3.components.shared.TitleSection
@@ -32,14 +34,14 @@ fun PaymentSucces(navController: NavController) {
                 .verticalScroll(rememberScrollState())
                 .padding(top = 32.dp)
         ) {
-            TitleSection("Payment\nSuccess!")
+            TitleSection(stringResource(R.string.payment_success))
             Spacer(modifier = Modifier.height(10.dp))
-            SubtitleSection("Your order is being prepared by the shop, the courier will send it to your address")
+            SubtitleSection(stringResource(R.string.your_order_is_being_prepared_by_the_shop_the_courier_will_send_it_to_your_address))
         }
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        StartButton("Go Home", onClick = {
+        StartButton(stringResource(R.string.go_home), onClick = {
             navController.navigate(Screen.Home.route)
         })
     }

@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -28,9 +29,9 @@ import com.example.petshopapptp3.R
 import com.example.petshopapptp3.components.profile.ModeButton
 import com.example.petshopapptp3.components.profile.StatItem
 import com.example.petshopapptp3.components.profile.FilterChip
-import com.example.petshopapptp3.components.shared.ClickeableText
 import com.example.petshopapptp3.components.shared.ProductRow
 import com.example.petshopapptp3.navigation.Screen
+import com.example.petshopapptp3.viewmodel.FavoritesViewModel
 import com.example.petshopapptp3.viewmodel.ProductViewModel
 
 @Composable
@@ -41,6 +42,9 @@ fun ProfileScreen(navController: NavController) {
 
     val backgroundColor = Color.White
     val purple = Color(0xFF7B61FF)
+
+    val favVm: FavoritesViewModel = hiltViewModel()
+    val favoriteIds by favVm.favoriteIds.collectAsState()
 
     Box(
         modifier = Modifier
@@ -63,14 +67,14 @@ fun ProfileScreen(navController: NavController) {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                        ModeButton("Profile", !isSellerMode) { isSellerMode = false }
-                        ModeButton("Seller Mode", isSellerMode) { isSellerMode = true }
+                        ModeButton(stringResource(R.string.profile), !isSellerMode) { isSellerMode = false }
+                        ModeButton(stringResource(R.string.seller_mode), isSellerMode) { isSellerMode = true }
                     }
 
                     IconButton(onClick = { navController.navigate(Screen.Settings.route) }) {
                         Icon(
                             imageVector = Icons.Default.Settings,
-                            contentDescription = "Settings",
+                            contentDescription = stringResource(R.string.settings),
                             tint = Color.Black
                         )
                     }
@@ -90,7 +94,7 @@ fun ProfileScreen(navController: NavController) {
 
                     Image(
                         painter = painterResource(id = R.drawable.fondo_avatar),
-                        contentDescription = "Fondo decorativo",
+                        contentDescription = stringResource(R.string.fondo_decorativo),
                         modifier = Modifier
                             .matchParentSize()
                             .offset(y = yOffset)
@@ -106,7 +110,7 @@ fun ProfileScreen(navController: NavController) {
                         if (!isSellerMode) {
                             Image(
                                 painter = painterResource(id = R.drawable.avatar4),
-                                contentDescription = "Avatar",
+                                contentDescription = stringResource(R.string.avatar),
                                 modifier = Modifier
                                     .size(100.dp)
                                     .offset(y = yOffset)
@@ -115,7 +119,7 @@ fun ProfileScreen(navController: NavController) {
                         } else {
                             Image(
                                 painter = painterResource(id = R.drawable.pittashop_logo),
-                                contentDescription = "Pittashop Logo",
+                                contentDescription = stringResource(R.string.pittashop_logo),
                                 modifier = Modifier
                                     .size(100.dp)
                                     .offset(y = yOffset)
@@ -129,25 +133,25 @@ fun ProfileScreen(navController: NavController) {
 
 
                 if (!isSellerMode) {
-                    Text("Abduldul", fontSize = 22.sp, fontWeight = FontWeight.Bold)
+                    Text(stringResource(R.string.abduldul), fontSize = 22.sp, fontWeight = FontWeight.Bold)
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        FilterChip("Saved", onClick = { })
-                        FilterChip("Edit Profile", onClick = {
+                        FilterChip(stringResource(R.string.saved), onClick = { })
+                        FilterChip(stringResource(R.string.edit_profile), onClick = {
                             navController.navigate(Screen.Account.route)
                         })
                     }
                 } else {
 
-                    Text("Pittashop", fontSize = 22.sp, fontWeight = FontWeight.Bold)
+                    Text(stringResource(R.string.pittashop), fontSize = 22.sp, fontWeight = FontWeight.Bold)
                     Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                        StatItem("109", "Followers")
-                        StatItem("992", "Following")
-                        StatItem("80", "Sales")
+                        StatItem(stringResource(R.string._109), stringResource(R.string.followers))
+                        StatItem(stringResource(R.string._992), stringResource(R.string.following))
+                        StatItem(stringResource(R.string._80), stringResource(R.string.sales))
                     }
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        FilterChip("Product", onClick = {})
-                        FilterChip("Sold" , onClick = {})
-                        FilterChip("Stats" , onClick = {})
+                        FilterChip(stringResource(R.string.product), onClick = {})
+                        FilterChip(stringResource(R.string.sold), onClick = {})
+                        FilterChip(stringResource(R.string.stats), onClick = {})
                     }
                 }
 
@@ -158,7 +162,9 @@ fun ProfileScreen(navController: NavController) {
                 ProductRow(
                     rowProducts = rowProducts,
                     purple = purple,
-                    navController = navController
+                    navController = navController ,
+                    favoriteIds = favoriteIds,
+                    onToggleFavorite = { product -> favVm.toggle(product) }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
             }
